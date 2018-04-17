@@ -1,0 +1,10 @@
+#container-canvas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#start-scr {
+  margin-top: 50px;
+}
