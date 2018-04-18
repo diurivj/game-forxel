@@ -9,7 +9,7 @@ var sel1    = true;
 var sel2    = false;
 var images = {
   field:      "assets/field.png",
-  startImage: "assets/START1.png",
+  startImage: "assets/start1.png",
   player1:    "assets/start2.png",
   player2:    "assets/start3.png",
   diego:      "assets/pixelart1-1.png",
