@@ -23,8 +23,6 @@ function BoardStart(imgSrc){
   this.y          = 0;
   this.width      = canvas.width;
   this.height     = canvas.height;
-  this.widthsel   = canvas.width;
-  this.heightsel  = canvas.height;
   this.img        = new Image();
   this.img.src    = imgSrc || images.startImage;
   this.draw = function(){
@@ -37,6 +35,7 @@ var selec1  = new BoardStart(images.player1);
 var selec2  = new BoardStart(images.player2);
 var count   = new BoardStart(images.field);
 var i       = 3;
+
 setTimeout(function(){
   inicio.draw()
 }, 100);
@@ -50,11 +49,13 @@ function countScreen(){
   var intervalo = setInterval(function(){
     ctx.clearRect(0,0,canvas.width, canvas.height);
     count.draw();
-    ctx.font = "30px Arial";
+    ctx.font = "100px Arial";
     ctx.fillText(i, canvas.width / 2, canvas.height / 2);
     i--;
-    if (i === -1) clearInterval(intervalo)
+    if (i === 0) 
+      clearInterval(intervalo);
   }, 1000); 
+  setTimeout(function(){ start(); }, 4000);
 };
 
 canvas.addEventListener("click", function(){
