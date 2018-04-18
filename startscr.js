@@ -33,6 +33,58 @@ function BoardStart(imgSrc, width, height, x, y){
   this.draw = function(){
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }  
+
+  this.moveLeft1 = function(){
+    if (this.x > 10){
+    diego1.img.src = images.diego2;
+    raul1.img.src  = images.raul2;
+    max1.img.src   = images.max2;
+    bliss1.img.src = images.bliss2;
+    this.x -=10;
+    }
+  };
+
+  this.moveRight1 = function(){
+    if (this.x < 885){
+    diego1.img.src = images.diego1;
+    raul1.img.src  = images.raul1;
+    max1.img.src   = images.max1;
+    bliss1.img.src = images.bliss1;
+    this.x +=10;
+    }
+  }
+
+  this.moveLeft2 = function(){
+    if (this.x > 10){
+      diego2.img.src = images.diego2;
+      raul2.img.src  = images.raul2;
+      max2.img.src   = images.max2;
+      bliss2.img.src = images.bliss2;
+      this.x -=10;
+    }
+  };
+
+  this.moveRight2 = function(){
+    if (this.x < 885){
+    diego2.img.src = images.diego1;
+    raul2.img.src  = images.raul1;
+    max2.img.src   = images.max1;
+    bliss2.img.src = images.bliss1;
+    this.x +=10;
+    }
+  }
+
+  this.moveUp = function(){
+    if (this.y > -10){
+      this.y -=10;
+    }
+  }
+
+  this.moveDown = function(){
+    if (this.y < 480){
+      this.y +=10;
+    }
+  }
 };
 
 var inicio  = new BoardStart();

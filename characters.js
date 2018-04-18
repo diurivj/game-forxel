@@ -1,3 +1,6 @@
+var frames = 0;
+var interval;
+
 function Arena (){
   this.x          = 0;
   this.y          = 0;
@@ -11,63 +14,141 @@ function Arena (){
   }  
 };
 
-var arena   = new Arena();
+var arena = new Arena();
  
-function drawArena(){
-  arena.drawField();
-  if (name1 === "diego" && name2 === "diego"){
-    diego1.draw();
-    diego2.draw();
-  } else if (name1 === "diego" && name2 === "raul"){
-    diego1.draw();
-    raul2.draw();
-  } else if (name1 === "diego" && name2 === "max"){
-    diego1.draw();
-    max2.draw();
-  } else if (name1 === "diego" && name2 === "bliss"){
-    diego1.draw();
-    bliss2.draw();
-  } else if (name1 === "raul" && name2 === "diego"){
-    raul1.draw();
-    diego2.draw();
-  } else if (name1 === "raul" && name2 === "raul"){
-    raul1.draw();
-    raul2.draw();
-  } else if (name1 === "raul" && name2 === "max"){
-    raul1.draw();
-    max2.draw();
-  } else if (name1 === "raul" && name2 === "bliss"){
-    raul1.draw();
-    bliss2.draw();
-  } else if (name1 === "max" && name2 === "diego"){
-    max1.draw();
-    diego2.draw();
-  } else if (name1 === "max" && name2 === "raul"){
-    max1.draw();
-    raul2.draw();
-  } else if (name1 === "max" && name2 === "max"){
-    max1.draw();
-    max2.draw();
-  } else if (name1 === "max" && name2 === "bliss"){
-    max1.draw();
-    bliss2.draw();
-  } else if (name1 === "bliss" && name2 === "diego"){
-    bliss1.draw();
-    diego2.draw();
-  } else if (name1 === "bliss" && name2 === "raul"){
-    bliss1.draw();
-    raul2.draw();
-  } else if (name1 === "bliss" && name2 === "max"){
-    bliss1.draw();
-    max2.draw();
-  } else if (name1 === "bliss" && name2 === "bliss"){
-    bliss1.draw();
-    bliss2.draw();
+function Player(name){
+
+  this.draw1 = function(name){
+    if (name === "diego"){
+      diego1.draw();
+    } else if (name === "raul") {
+      raul1.draw();
+    } else if (name === "max") {
+      max1.draw();
+    } else if (name === "bliss") {
+      bliss1.draw();
+    }
+  };
+  this.draw2 = function(name){
+    if (name === "diego"){
+      diego2.draw();
+    } else if (name === "raul") {
+      raul2.draw();
+    } else if (name === "max") {
+      max2.draw();
+    } else if (name === "bliss") {
+      bliss2.draw();
+    }
   };
 
-}
+};
+
+var char1 = new Player(name1);
+var char2 = new Player(name2);
 
 function start (){
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawArena();
+  if (interval > 0) 
+    return;
+  interval = setInterval(function(){
+    update();
+  }, 1000/60);
 };
+
+function update(){
+  frames ++;
+  console.log(frames);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  arena.drawField();
+  char1.draw1(name1);
+  char2.draw2(name2);
+};
+ //player1 controles
+ //left
+addEventListener("keydown", function(key){
+  if (key.keyCode === 65){
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    diego1.moveLeft1();
+    raul1.moveLeft1();
+    max1.moveLeft1();
+    bliss1.moveLeft1();
+    update();
+  };
+});
+//up
+addEventListener("keydown", function(key){
+  if (key.keyCode === 87){
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    diego1.moveUp();
+    raul1.moveUp();
+    max1.moveUp();
+    bliss1.moveUp();
+    update();
+  };
+});
+//down
+addEventListener("keydown", function(key){
+  if (key.keyCode === 83){
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    diego1.moveDown();
+    raul1.moveDown();
+    max1.moveDown();
+    bliss1.moveDown();
+    update();
+  };
+});
+//right
+addEventListener("keydown", function(key){
+  if (key.keyCode === 68){
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    diego1.moveRight1();
+    raul1.moveRight1();
+    max1.moveRight1();
+    bliss1.moveRight1();
+    update();
+  };
+});
+//player 2 controles
+//left
+addEventListener("keydown", function(key){
+  if (key.keyCode === 37){
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    diego2.moveLeft2();
+    raul2.moveLeft2();
+    max2.moveLeft2();
+    bliss2.moveLeft2();
+    update();
+  };
+});
+//up
+addEventListener("keydown", function(key){
+  if (key.keyCode === 38){
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    diego2.moveUp();
+    raul2.moveUp();
+    max2.moveUp();
+    bliss2.moveUp();
+    update();
+  };
+});
+//down
+addEventListener("keydown", function(key){
+  if (key.keyCode === 40){
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    diego2.moveDown();
+    raul2.moveDown();
+    max2.moveDown();
+    bliss2.moveDown();
+    update();
+  };
+});
+
+addEventListener("keydown", function(key){
+  if (key.keyCode === 39){
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    diego2.moveRight2();
+    raul2.moveRight2();
+    max2.moveRight2();
+    bliss2.moveRight2();
+    update();
+  };
+});
