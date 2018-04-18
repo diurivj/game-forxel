@@ -8,21 +8,25 @@ var click   = false;
 var sel1    = true;
 var sel2    = false;
 var images = {
-  field:      "assets/field.png",
-  startImage: "assets/START1.png",
-  player1:    "assets/start2.png",
-  player2:    "assets/start3.png",
-  diego:      "assets/pixelart1-1.png",
-  blisS:      "assets/pixelart2-1.png",
-  max:        "assets/pixelart4-1.png",
-  raul:       "assets/pixelart5-1.png"
+  field:       "assets/field.png",
+  startImage:  "assets/START1.png",
+  player1:     "assets/start2.png",
+  player2:     "assets/start3.png",
+  diego1:      "assets/pixelart1-1.png",
+  raul1:       "assets/pixelart2-1.png",
+  max1:        "assets/pixelart4-1.png",
+  bliss1:      "assets/pixelart5-1.png",
+  diego2:      "assets/pixelart1.png",
+  raul2:       "assets/pixelart2.png",
+  max2:        "assets/pixelart4.png",
+  bliss2:       "assets/pixelart5.png"
 };
 
-function BoardStart(imgSrc){
-  this.x          = 0;
-  this.y          = 0;
-  this.width      = canvas.width;
-  this.height     = canvas.height;
+function BoardStart(imgSrc, width, height, x, y){
+  this.x          = x || 0;
+  this.y          = y || 0;
+  this.width      = width  || canvas.width;
+  this.height     = height || canvas.height;
   this.img        = new Image();
   this.img.src    = imgSrc || images.startImage;
 
@@ -35,6 +39,14 @@ var inicio  = new BoardStart();
 var selec1  = new BoardStart(images.player1);
 var selec2  = new BoardStart(images.player2);
 var count   = new BoardStart(images.field);
+var diego1  = new BoardStart(images.diego1, 100, 100, 10, 0);
+var diego2  = new BoardStart(images.diego2, 100, 100, 880, 470);
+var raul1   = new BoardStart(images.raul1, 100, 100, 10, 0);
+var raul2   = new BoardStart(images.raul2, 100, 100, 880, 470);
+var max1    = new BoardStart(images.max1, 100, 100, 10, 0);
+var max2    = new BoardStart(images.max2, 100, 100, 880, 470)
+var bliss1  = new BoardStart(images.bliss1, 100, 100, 10, 0);
+var bliss2  = new BoardStart(images.bliss2, 100, 100, 880, 470);
 var i       = 3;
 
 setTimeout(function(){
