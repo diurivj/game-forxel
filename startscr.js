@@ -26,16 +26,12 @@ function BoardStart(imgSrc){
   this.img        = new Image();
   this.img.src    = imgSrc || images.startImage;
 
-  this.img.onload = function(){
-    this.draw();
-  }.bind(this);
-
   this.draw = function(){
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }  
 };
 
-var inicio  = new BoardStart(images.startImage);
+var inicio  = new BoardStart();
 var selec1  = new BoardStart(images.player1);
 var selec2  = new BoardStart(images.player2);
 var count   = new BoardStart(images.field);
