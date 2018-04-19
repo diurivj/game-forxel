@@ -3,8 +3,33 @@
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: row;
+  background-image: url("assets/wallpaper.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #start-scr {
-  margin-top: 50px;
+  border: 1px solid #8b5a2b;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#player1 {
+  background-image: url("assets/SelecPlayer1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40%;
+  height: 250px;
+  margin-left: 5%;
+  margin-bottom: 6%;
+}
+
+#player2 {
+  background-image: url("assets/SelecPlayer2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 40%;
+  height: 250px;
+  margin-right: -3.5%;
+  margin-bottom: 6%;
 }

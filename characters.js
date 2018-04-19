@@ -106,6 +106,7 @@ function update(){
     };
   });
   checkCollition();
+  checkCollition2();
 };
  //player1 controles
  //left

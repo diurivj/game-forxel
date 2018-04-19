@@ -112,7 +112,17 @@ setTimeout(function(){
 function gameOver(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.font = "200 px Courier";
+  ctx.fillStyle = "black";
   ctx.fillText("PLAYER 1 GANÓ", 100, canvas.height / 2);
+  clearInterval(interval);
+  interval = 0;
+}
+
+function gameOver2(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "200 px Courier";
+  ctx.fillStyle = "black";
+  ctx.fillText("PLAYER 2 GANÓ", 100, canvas.height / 2);
   clearInterval(interval);
   interval = 0;
 }
@@ -120,6 +130,18 @@ function gameOver(){
 function checkCollition(){
   bullets.forEach(function(bala){
     if (diego2.isTouching(bala)) gameOver();    
+    if (raul2.isTouching(bala)) gameOver();   
+    if (max2.isTouching(bala)) gameOver();   
+    if (bliss2.isTouching(bala)) gameOver();   
+  });
+}
+
+function checkCollition2(){
+  bullets2.forEach(function(bala){
+    if (diego1.isTouching(bala)) gameOver2();    
+    if (raul1.isTouching(bala)) gameOver2();   
+    if (max1.isTouching(bala)) gameOver2();   
+    if (bliss1.isTouching(bala)) gameOver2();   
   });
 }
 
@@ -133,6 +155,7 @@ function countScreen(){
   var intervalo = setInterval(function(){
     ctx.clearRect(0,0,canvas.width, canvas.height);
     count.draw();
+    ctx.fillStyle = "white";
     ctx.font = "100px Arial";
     ctx.fillText(i, canvas.width / 2, canvas.height / 2);
     i--;
