@@ -108,7 +108,7 @@ function BoardStart(imgSrc, width, height, x, y){
   };
 };
 
-
+var gOver   = new BoardStart(images.field)
 var inicio  = new BoardStart();
 var selec1  = new BoardStart(images.player1);
 var selec2  = new BoardStart(images.player2);
@@ -128,23 +128,25 @@ setTimeout(function(){
 }, 100);
 
 function gameOver(){
-  musica.audio0.pause();
   dead.audio2.play();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  gOver.draw();
   ctx.font = "200 px Courier";
-  ctx.fillStyle = "black";
-  ctx.fillText("PLAYER 1 GANÓ", 100, canvas.height / 2);
+  ctx.fillStyle = "white";
+  ctx.fillText("PLAYER 1 WON", 200, canvas.height / 2);
+  musica.audio0.pause();
   clearInterval(interval);
   interval = 0;
 }
 
 function gameOver2(){
-  musica.audio0.pause();
   dead.audio2.play();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  gOver.draw();
   ctx.font = "200 px Courier";
-  ctx.fillStyle = "black";
-  ctx.fillText("PLAYER 2 GANÓ", 100, canvas.height / 2);
+  ctx.fillStyle = "white";
+  ctx.fillText("PLAYER 2 WON", 200, canvas.height / 2);
+  musica.audio0.pause();
   clearInterval(interval);
   interval = 0;
 }
