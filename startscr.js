@@ -40,7 +40,7 @@ function BoardStart(imgSrc, width, height, x, y){
     raul1.img.src  = images.raul2;
     max1.img.src   = images.max2;
     bliss1.img.src = images.bliss2;
-    this.x -=10;
+    this.x -=20;
     }
   };
 
@@ -50,7 +50,7 @@ function BoardStart(imgSrc, width, height, x, y){
     raul1.img.src  = images.raul1;
     max1.img.src   = images.max1;
     bliss1.img.src = images.bliss1;
-    this.x +=10;
+    this.x +=20;
     }
   }
 
@@ -60,7 +60,7 @@ function BoardStart(imgSrc, width, height, x, y){
       raul2.img.src  = images.raul2;
       max2.img.src   = images.max2;
       bliss2.img.src = images.bliss2;
-      this.x -=10;
+      this.x -=20;
     }
   };
 
@@ -70,21 +70,25 @@ function BoardStart(imgSrc, width, height, x, y){
     raul2.img.src  = images.raul1;
     max2.img.src   = images.max1;
     bliss2.img.src = images.bliss1;
-    this.x +=10;
+    this.x +=20;
     }
   }
 
   this.moveUp = function(){
     if (this.y > -10){
-      this.y -=10;
+      this.y -=20;
     }
   }
 
   this.moveDown = function(){
     if (this.y < 480){
-      this.y +=10;
+      this.y +=20;
     }
-  }
+  };
+
+  this.isTouching = function(bala){
+    return (this.x < bala.x + bala.width) && (this.x + this.width > bala.x) && (this.y < bala.y + bala.height) && (this.y + this.height > bala.y);
+  };
 };
 
 var inicio  = new BoardStart();
@@ -105,10 +109,25 @@ setTimeout(function(){
   inicio.draw()
 }, 100);
 
+function gameOver(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "200 px Courier";
+  ctx.fillText("PLAYER 1 GANÓ", 100, canvas.height / 2);
+  clearInterval(interval);
+  interval = 0;
+}
+
+function checkCollition(){
+  bullets.forEach(function(bala){
+    if (diego2.isTouching(bala)) gameOver();    
+  });
+}
+
 function selectPlayer1(){
   ctx.clearRect(0,0,canvas.width, canvas.height);
   selec1.draw();
 };
+
 
 function countScreen(){
   var intervalo = setInterval(function(){

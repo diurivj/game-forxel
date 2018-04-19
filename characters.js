@@ -1,5 +1,9 @@
-var frames = 0;
 var interval;
+var frames    = 0;
+var rotate    = false;
+var rotate2   = true; 
+var bullets   = [];
+var bullets2  = [];
 
 function Arena (){
   this.x          = 0;
@@ -12,6 +16,19 @@ function Arena (){
   this.drawField = function(){
     ctx.drawImage(this.field, this.x, this.y, this.width, this.height);
   }  
+};
+
+function Bullets (x, y){
+  this.x          = x;
+  this.y          = y;
+  this.width      = 100;
+  this.height     = 100;
+  this.bala       = new Image();
+  this.bala.src   = "assets/bullet.png";
+
+  this.draw = function(){
+    ctx.drawImage(this.bala, this.x + 20, this.y + 18, this.width, this.height);   
+  };
 };
 
 var arena = new Arena();
@@ -56,16 +73,45 @@ function start (){
 
 function update(){
   frames ++;
-  console.log(frames);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   arena.drawField();
   char1.draw1(name1);
   char2.draw2(name2);
+  bullets.forEach(function(bullet){
+    if (bullet.x > canvas.width){
+      bullets.shift(bullet);
+    } else if (bullet.x < -canvas.width) {
+      bullets.shift(bullet);
+    }
+    if (rotate){
+      bullet.x -= 30;
+      bullet.draw()
+    } else {
+      bullet.x += 30;
+      bullet.draw()
+    };
+  });
+  bullets2.forEach(function(bullet){
+    if (bullet.x > canvas.width){
+      bullets2.shift(bullet);
+    } else if (bullet.x < -canvas.width) {
+      bullets2.shift(bullet);
+    }
+    if (rotate2){
+      bullet.x -= 30;
+      bullet.draw()
+    } else {
+      bullet.x += 30;
+      bullet.draw()
+    };
+  });
+  checkCollition();
 };
  //player1 controles
  //left
 addEventListener("keydown", function(key){
   if (key.keyCode === 65){
+    rotate = true;
     ctx.clearRect(0,0, canvas.width, canvas.height)
     diego1.moveLeft1();
     raul1.moveLeft1();
@@ -99,6 +145,7 @@ addEventListener("keydown", function(key){
 //right
 addEventListener("keydown", function(key){
   if (key.keyCode === 68){
+    rotate = false;
     ctx.clearRect(0,0, canvas.width, canvas.height)
     diego1.moveRight1();
     raul1.moveRight1();
@@ -111,6 +158,7 @@ addEventListener("keydown", function(key){
 //left
 addEventListener("keydown", function(key){
   if (key.keyCode === 37){
+    rotate2 = true;
     ctx.clearRect(0,0, canvas.width, canvas.height)
     diego2.moveLeft2();
     raul2.moveLeft2();
@@ -141,14 +189,33 @@ addEventListener("keydown", function(key){
     update();
   };
 });
-
+//right
 addEventListener("keydown", function(key){
   if (key.keyCode === 39){
+    rotate2 = false;
     ctx.clearRect(0,0, canvas.width, canvas.height)
     diego2.moveRight2();
     raul2.moveRight2();
     max2.moveRight2();
     bliss2.moveRight2();
     update();
+  };
+});
+
+addEventListener("keydown", function(key){
+  if (key.keyCode === 84){
+    bullets.push(new Bullets(diego1.x, diego1.y));
+    bullets.push(new Bullets(raul1.x, raul1.y));
+    bullets.push(new Bullets(max1.x, max1.y));
+    bullets.push(new Bullets(bliss1.x, bliss1.y));
+  };
+});
+
+addEventListener("keydown", function(key){
+  if (key.keyCode === 78){
+    bullets2.push(new Bullets(diego2.x, diego2.y));
+    bullets2.push(new Bullets(raul2.x, raul2.y));
+    bullets2.push(new Bullets(max2.x, max2.y));
+    bullets2.push(new Bullets(bliss2.x, bliss2.y));
   };
 });
