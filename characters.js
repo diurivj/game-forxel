@@ -111,6 +111,7 @@ function update(){
  //player1 controles
  //left
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 65){
     rotate = true;
     ctx.clearRect(0,0, canvas.width, canvas.height)
@@ -123,6 +124,7 @@ addEventListener("keydown", function(key){
 });
 //up
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 87){
     ctx.clearRect(0,0, canvas.width, canvas.height)
     diego1.moveUp();
@@ -134,6 +136,7 @@ addEventListener("keydown", function(key){
 });
 //down
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 83){
     ctx.clearRect(0,0, canvas.width, canvas.height)
     diego1.moveDown();
@@ -145,6 +148,7 @@ addEventListener("keydown", function(key){
 });
 //right
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 68){
     rotate = false;
     ctx.clearRect(0,0, canvas.width, canvas.height)
@@ -158,6 +162,7 @@ addEventListener("keydown", function(key){
 //player 2 controles
 //left
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 37){
     rotate2 = true;
     ctx.clearRect(0,0, canvas.width, canvas.height)
@@ -170,6 +175,7 @@ addEventListener("keydown", function(key){
 });
 //up
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 38){
     ctx.clearRect(0,0, canvas.width, canvas.height)
     diego2.moveUp();
@@ -181,6 +187,7 @@ addEventListener("keydown", function(key){
 });
 //down
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 40){
     ctx.clearRect(0,0, canvas.width, canvas.height)
     diego2.moveDown();
@@ -192,6 +199,7 @@ addEventListener("keydown", function(key){
 });
 //right
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 39){
     rotate2 = false;
     ctx.clearRect(0,0, canvas.width, canvas.height)
@@ -204,6 +212,7 @@ addEventListener("keydown", function(key){
 });
 
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 84){
     pium.audio1.play();
     bullets.push(new Bullets(diego1.x, diego1.y));
@@ -214,6 +223,7 @@ addEventListener("keydown", function(key){
 });
 
 addEventListener("keydown", function(key){
+  event.preventDefault();
   if (key.keyCode === 78){
     pium.audio1.play();
     bullets2.push(new Bullets(diego2.x, diego2.y));
