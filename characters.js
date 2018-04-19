@@ -6,12 +6,12 @@ var bullets   = [];
 var bullets2  = [];
 
 function Arena (){
-  this.x          = 0;
-  this.y          = 0;
-  this.width      = canvas.width;
-  this.height     = canvas.height;
-  this.field      = new Image();
-  this.field.src  = "assets/arena.png";
+  this.x            = 0;
+  this.y            = 0;
+  this.width        = canvas.width;
+  this.height       = canvas.height;
+  this.field        = new Image();
+  this.field.src    = "assets/arena.png";
 
   this.drawField = function(){
     ctx.drawImage(this.field, this.x, this.y, this.width, this.height);
@@ -66,7 +66,7 @@ var char2 = new Player(name2);
 function start (){
   if (interval > 0) 
     return;
-  interval = setInterval(function(){
+  interval = setInterval(function(){  
     update();
   }, 1000/60);
 };
@@ -205,6 +205,7 @@ addEventListener("keydown", function(key){
 
 addEventListener("keydown", function(key){
   if (key.keyCode === 84){
+    pium.audio1.play();
     bullets.push(new Bullets(diego1.x, diego1.y));
     bullets.push(new Bullets(raul1.x, raul1.y));
     bullets.push(new Bullets(max1.x, max1.y));
@@ -214,6 +215,7 @@ addEventListener("keydown", function(key){
 
 addEventListener("keydown", function(key){
   if (key.keyCode === 78){
+    pium.audio1.play();
     bullets2.push(new Bullets(diego2.x, diego2.y));
     bullets2.push(new Bullets(raul2.x, raul2.y));
     bullets2.push(new Bullets(max2.x, max2.y));

@@ -22,6 +22,22 @@ var images = {
   bliss2:       "assets/pixelart5.png"
 };
 
+function Audios(){
+  this.audio       = new Audio();
+  this.audio.src   = "assets/8-Bit_Retro_Video_Game_Sound_Effects_1_nzjtkaLCn60-[AudioTrimmer.com].mp3";
+  this.audio0      = new Audio();
+  this.audio0.src  = "assets/Fortnite_OST_-_Battle_Royale_Menu_Music_Rock_Version_2q-k7ScMs0k.mp3";
+  this.audio1      = new Audio();
+  this.audio1.src  = "assets/pium-[AudioTrimmer.com].m4a";
+  this.audio2      = new Audio();
+  this.audio2.src  = "assets/WhatsApp-Ptt-2018-04-19-at-12.32.04.mp3";
+}
+
+var musica  = new Audios();
+var select  = new Audios();
+var pium    = new Audios();
+var dead    = new Audios();
+
 function BoardStart(imgSrc, width, height, x, y){
   this.x          = x || 0;
   this.y          = y || 0;
@@ -31,6 +47,7 @@ function BoardStart(imgSrc, width, height, x, y){
   this.img.src    = imgSrc || images.startImage;
 
   this.draw = function(){
+    musica.audio0.play();
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }  
 
@@ -91,6 +108,7 @@ function BoardStart(imgSrc, width, height, x, y){
   };
 };
 
+
 var inicio  = new BoardStart();
 var selec1  = new BoardStart(images.player1);
 var selec2  = new BoardStart(images.player2);
@@ -110,6 +128,8 @@ setTimeout(function(){
 }, 100);
 
 function gameOver(){
+  musica.audio0.pause();
+  dead.audio2.play();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.font = "200 px Courier";
   ctx.fillStyle = "black";
@@ -119,6 +139,8 @@ function gameOver(){
 }
 
 function gameOver2(){
+  musica.audio0.pause();
+  dead.audio2.play();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.font = "200 px Courier";
   ctx.fillStyle = "black";
@@ -178,6 +200,7 @@ canvas.addEventListener("click", function(){
 addEventListener("keydown", function(key){
   if (sel1 && !sel2){
     if (key.keyCode === 49){
+      select.audio.play();
       sel1 = false;
       sel2 = true;
       name1 = "diego";
@@ -185,6 +208,7 @@ addEventListener("keydown", function(key){
       selec2.draw();
     };
     if (key.keyCode === 50){
+      select.audio.play();
       sel1 = false;
       sel2 = true;
       name1 = "raul";
@@ -192,6 +216,7 @@ addEventListener("keydown", function(key){
       selec2.draw();
     };
     if (key.keyCode === 51){
+      select.audio.play();
       sel1 = false;
       sel2 = true;
       name1 = "max";
@@ -199,6 +224,7 @@ addEventListener("keydown", function(key){
       selec2.draw();
     };
     if (key.keyCode === 52){
+      select.audio.play();
       sel1 = false;
       sel2 = true;
       name1 = "bliss";
@@ -207,24 +233,28 @@ addEventListener("keydown", function(key){
     };
   } else if (!sel1 && sel2) {
       if (key.keyCode === 53){
+        select.audio.play();
         sel2 = false;
         name2 = "diego";
         console.log(name2)
         countScreen();
       };
       if (key.keyCode === 54){
+        select.audio.play();
         sel2 = false;
         name2 = "raul";
         console.log(name2)
         countScreen();
       };
       if (key.keyCode === 55){
+        select.audio.play();
         sel2 = false;
         name2 = "max";
         console.log(name2)
         countScreen();
       };
       if (key.keyCode === 56){
+        select.audio.play();
         sel2 = false;
         name2 = "bliss";
         console.log(name2)
