@@ -8,6 +8,8 @@ var click   = false;
 var sel1    = true;
 var sel2    = false;
 var images = {
+  player1won:  "assets/Player1Won.png",
+  player2won:  "assets/Player2Won.png",
   field:       "assets/field.png",
   startImage:  "assets/START1.png",
   player1:     "assets/start2.png",
@@ -108,7 +110,8 @@ function BoardStart(imgSrc, width, height, x, y){
   };
 };
 
-var gOver   = new BoardStart(images.field)
+var gOver2  = new BoardStart(images.player2won); 
+var gOver1  = new BoardStart(images.player1won);
 var inicio  = new BoardStart();
 var selec1  = new BoardStart(images.player1);
 var selec2  = new BoardStart(images.player2);
@@ -130,10 +133,7 @@ setTimeout(function(){
 function gameOver(){
   dead.audio2.play();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  gOver.draw();
-  ctx.font = "200 px Courier";
-  ctx.fillStyle = "white";
-  ctx.fillText("PLAYER 1 WON", 200, canvas.height / 2);
+  gOver1.draw();
   musica.audio0.pause();
   clearInterval(interval);
   interval = 0;
@@ -142,10 +142,7 @@ function gameOver(){
 function gameOver2(){
   dead.audio2.play();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  gOver.draw();
-  ctx.font = "200 px Courier";
-  ctx.fillStyle = "white";
-  ctx.fillText("PLAYER 2 WON", 200, canvas.height / 2);
+  gOver2.draw();
   musica.audio0.pause();
   clearInterval(interval);
   interval = 0;

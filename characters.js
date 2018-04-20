@@ -27,7 +27,7 @@ function Bullets (x, y){
   this.bala.src   = "assets/bullet.png";
 
   this.draw = function(){
-    ctx.drawImage(this.bala, this.x + 20, this.y + 18, this.width, this.height);   
+    ctx.drawImage(this.bala, this.x + 30, this.y + 5, this.width, this.height);   
   };
 };
 
@@ -231,4 +231,10 @@ addEventListener("keydown", function(key){
     bullets2.push(new Bullets(max2.x, max2.y));
     bullets2.push(new Bullets(bliss2.x, bliss2.y));
   };
+});
+
+addEventListener("keydown", function(key){
+  if (key.keyCode === 82){
+    location.reload();
+  }
 });
